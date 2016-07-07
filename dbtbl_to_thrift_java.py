@@ -39,7 +39,8 @@ def main():
                 comment = line[comment_idx:end_idx]
             #if(tokens[-2] == 'COMMENT'):
             #    comment = tokens[-1]
-            thirft_ret += '    {}: optional {} {}; // {}\n'.format(field_idx, thrift_type, col_name, comment)
+            camel_cased = underscore_to_camelcase(col_name)
+            thirft_ret += '    {}: optional {} {}; // {}\n'.format(field_idx, thrift_type, camel_cased, comment)
             domain_ret += 'private {} {}; // {}\n'.format(java_type, col_name, comment)
             col_list.append(col_name)
             field_idx += 1
